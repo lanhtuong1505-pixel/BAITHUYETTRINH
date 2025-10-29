@@ -6,6 +6,41 @@
 <title>Slide Nông nghiệp Việt Nam</title>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
+   /* 🌾 Dây bông lúa hai bên slide */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  width: 80px;
+  height: 100%;
+  background-repeat: repeat-y;
+  background-size: 80px auto;
+  opacity: 0.85;
+  pointer-events: none;
+  animation: sway 5s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+/* Dải trái */
+body::before {
+  left: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='200' viewBox='0 0 80 200'><path fill='%23FFD54F' d='M35 10c15 15 10 25-2 35s-15 15-5 25 5 15-5 25 0 20 10 30 0 20-10 30h-5c-5-10-5-20-10-30s0-15 10-25-5-15-10-25 5-20 15-30 5-20-3-35z'/></svg>");
+}
+
+/* Dải phải */
+body::after {
+  right: 0;
+  transform: scaleX(-1);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='200' viewBox='0 0 80 200'><path fill='%23FFD54F' d='M35 10c15 15 10 25-2 35s-15 15-5 25 5 15-5 25 0 20 10 30 0 20-10 30h-5c-5-10-5-20-10-30s0-15 10-25-5-15-10-25 5-20 15-30 5-20-3-35z'/></svg>");
+}
+
+/* Hiệu ứng đung đưa nhẹ */
+@keyframes sway {
+  0% { transform: translateX(0px) rotate(1deg); opacity: 0.9; }
+  100% { transform: translateX(3px) rotate(-1deg); opacity: 1; }
+}
+
    /* 🌾 Viền và bông lúa SVG (nhúng trực tiếp, không cần link ngoài) */
 .slide {
   position: relative;
