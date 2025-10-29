@@ -6,6 +6,98 @@
 <title>Slide Nông nghiệp Việt Nam</title>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
+   /* 🌾 Hiệu ứng nền nông nghiệp Việt Nam */
+body {
+  background: linear-gradient(to right, #ffecb3 0%, #a8e063 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 🌤️ Đám mây bay chậm */
+.cloud {
+  position: fixed;
+  top: 80px;
+  width: 200px;
+  height: 100px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 50%;
+  filter: blur(3px);
+  animation: cloudMove 60s linear infinite;
+  z-index: 0;
+}
+.cloud::before, .cloud::after {
+  content: "";
+  position: absolute;
+  background: rgba(255,255,255,0.8);
+  width: 150px;
+  height: 80px;
+  border-radius: 50%;
+}
+.cloud::before { top: -30px; left: 20px; }
+.cloud::after { top: 10px; left: 100px; }
+
+@keyframes cloudMove {
+  from { left: -300px; }
+  to { left: 100vw; }
+}
+
+/* 🐦 Chim bay ngang trời */
+.bird {
+  position: fixed;
+  top: 140px;
+  width: 40px;
+  height: 20px;
+  background: none;
+  border-radius: 50%;
+  animation: fly 25s linear infinite;
+  z-index: 0;
+}
+.bird::before, .bird::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 10px;
+  background: #333;
+  border-radius: 50%;
+}
+.bird::before { transform: rotate(-30deg); left: 0; }
+.bird::after { transform: rotate(30deg); right: 0; }
+
+@keyframes fly {
+  0% { left: -50px; top: 140px; transform: scale(1) rotate(0deg); }
+  50% { top: 100px; transform: scale(1.1) rotate(5deg); }
+  100% { left: 100vw; top: 160px; transform: scale(1) rotate(-5deg); }
+}
+
+/* 🌾 Viền bông lúa thật hai bên */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  width: 130px;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.9;
+  z-index: 1;
+  pointer-events: none;
+  animation: sway 6s ease-in-out infinite alternate;
+}
+body::before {
+  left: 0;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/68/Rice_plant_panicle.png');
+}
+body::after {
+  right: 0;
+  transform: scaleX(-1);
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/68/Rice_plant_panicle.png');
+}
+@keyframes sway {
+  0% { transform: rotate(2deg) scale(1); }
+  100% { transform: rotate(-2deg) scale(1.02); }
+}
+
    /* 🌾 Dây bông lúa hai bên slide */
 body::before,
 body::after {
@@ -80,10 +172,6 @@ body::after {
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path fill='%23FFD54F' d='M33 2c0 5-6 8-6 14s8 8 8 14-8 8-8 14 6 9 6 14-5 6-5 6h4s5-2 5-6-6-8-6-14 8-8 8-14-8-8-8-14 6-9 6-14h-4z'/></svg>");
 }
 
-/* hiệu ứng đung đưa */
-@keyframes sway {
-  0% { transform: rotate(5deg) scale(1); opacity: 0.9; }
-  100% { transform: rotate(-5deg) scale(1.05); opacity: 1; }
 }
 /* 🌟 Hiệu ứng quét ngang ánh sáng */
 .slide::after,
@@ -213,6 +301,8 @@ button:hover{background:#fff;color:#000;transform:scale(1.08);}
 </head>
 
 <body>
+<div class="cloud"></div>
+<div class="bird"></div>
 
 <div class="slide fade" id="slide1">
   <h1>🌾 Phiếu học tập 2 – Bài 11</h1>
