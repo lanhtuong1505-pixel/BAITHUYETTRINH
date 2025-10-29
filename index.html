@@ -339,34 +339,6 @@ window.addEventListener('wheel', function(e) {
 });
 </script>      
 </style>
- 
-/* 🌤️ Đám mây bay chậm */
-.cloud {
-  position: fixed;
-  top: 80px;
-  width: 200px;
-  height: 100px;
-  background: rgba(255,255,255,0.8);
-  border-radius: 50%;
-  filter: blur(3px);
-  animation: cloudMove 30s linear infinite;
-  z-index: 0;
-}
- .cloud::before, .cloud::after {
-  content: "";
-  position: absolute;
-  background: rgba(255,255,255,0.8);
-  width: 150px;
-  height: 80px;
-  border-radius: 50%;
-}
-.cloud::before { top: -30px; left: 20px; }
-.cloud::after { top: 10px; left: 100px; }
 
-@keyframes cloudMove {
-  from { left: -300px; }
-  to { left: 100vw; }
-}
-       
 </body>
 </html>
