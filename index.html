@@ -339,6 +339,7 @@ window.addEventListener('wheel', function(e) {
 });
 </script>      
 </style>
+ 
 /* 🌤️ Đám mây bay chậm */
 .cloud {
   position: fixed;
@@ -348,10 +349,10 @@ window.addEventListener('wheel', function(e) {
   background: rgba(255,255,255,0.8);
   border-radius: 50%;
   filter: blur(3px);
-  animation: cloudMove 60s linear infinite;
+  animation: cloudMove 30s linear infinite;
   z-index: 0;
 }
-.cloud::before, .cloud::after {
+ .cloud::before, .cloud::after {
   content: "";
   position: absolute;
   background: rgba(255,255,255,0.8);
@@ -365,34 +366,6 @@ window.addEventListener('wheel', function(e) {
 @keyframes cloudMove {
   from { left: -300px; }
   to { left: 100vw; }
-}
-
-/* 🐦 Chim bay ngang trời */
-.bird {
-  position: fixed;
-  top: 140px;
-  width: 40px;
-  height: 20px;
-  background: none;
-  border-radius: 50%;
-  animation: fly 25s linear infinite;
-  z-index: 0;
-}
-.bird::before, .bird::after {
-  content: "";
-  position: absolute;
-  width: 20px;
-  height: 10px;
-  background: #333;
-  border-radius: 50%;
-}
-.bird::before { transform: rotate(-30deg); left: 0; }
-.bird::after { transform: rotate(30deg); right: 0; }
-
-@keyframes fly {
-  0% { left: -50px; top: 140px; transform: scale(1) rotate(0deg); }
-  50% { top: 100px; transform: scale(1.1) rotate(5deg); }
-  100% { left: 100vw; top: 160px; transform: scale(1) rotate(-5deg); }
 }
        
 </body>
