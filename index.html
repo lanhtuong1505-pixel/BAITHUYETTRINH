@@ -394,6 +394,26 @@ window.addEventListener('wheel', function(e) {
   }
 });
 </script>
+<!-- Thêm vào cuối body -->
+<img src="/mnt/data/3c4ca9b2-9693-46af-bc07-e1ad14d083d5.png" class="bird" alt="chim">
+
+<style>
+/* Chim bay qua slide */
+.bird {
+  position: absolute;
+  width: 60px; /* kích thước chim */
+  top: 50px; /* độ cao chim bay */
+  left: -100px; /* bắt đầu ngoài màn hình */
+  z-index: 999;
+  animation: fly 15s linear infinite;
+}
+
+@keyframes fly {
+  0% { left: -100px; transform: rotate(0deg); }
+  50% { transform: rotate(10deg); } /* chim nghiêng cánh */
+  100% { left: 110%; transform: rotate(0deg); }
+}
+</style>
 
 </body>
 </html>
