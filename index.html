@@ -13,62 +13,6 @@ body {
   overflow: hidden;
 }
 
-/* 🌤️ Đám mây bay chậm */
-.cloud {
-  position: fixed;
-  top: 80px;
-  width: 200px;
-  height: 100px;
-  background: rgba(255,255,255,0.8);
-  border-radius: 50%;
-  filter: blur(3px);
-  animation: cloudMove 60s linear infinite;
-  z-index: 0;
-}
-.cloud::before, .cloud::after {
-  content: "";
-  position: absolute;
-  background: rgba(255,255,255,0.8);
-  width: 150px;
-  height: 80px;
-  border-radius: 50%;
-}
-.cloud::before { top: -30px; left: 20px; }
-.cloud::after { top: 10px; left: 100px; }
-
-@keyframes cloudMove {
-  from { left: -300px; }
-  to { left: 100vw; }
-}
-
-/* 🐦 Chim bay ngang trời */
-.bird {
-  position: fixed;
-  top: 140px;
-  width: 40px;
-  height: 20px;
-  background: none;
-  border-radius: 50%;
-  animation: fly 25s linear infinite;
-  z-index: 0;
-}
-.bird::before, .bird::after {
-  content: "";
-  position: absolute;
-  width: 20px;
-  height: 10px;
-  background: #333;
-  border-radius: 50%;
-}
-.bird::before { transform: rotate(-30deg); left: 0; }
-.bird::after { transform: rotate(30deg); right: 0; }
-
-@keyframes fly {
-  0% { left: -50px; top: 140px; transform: scale(1) rotate(0deg); }
-  50% { top: 100px; transform: scale(1.1) rotate(5deg); }
-  100% { left: 100vw; top: 160px; transform: scale(1) rotate(-5deg); }
-}
-
 /* 🌾 Viền bông lúa thật hai bên */
 body::before,
 body::after {
@@ -393,27 +337,63 @@ window.addEventListener('wheel', function(e) {
     prevSlide();
   }
 });
-</script>
-<!-- Thêm vào cuối body -->
-<img src="/mnt/data/3c4ca9b2-9693-46af-bc07-e1ad14d083d5.png" class="bird" alt="chim">
-
-<style>
-/* Chim bay qua slide */
-.bird {
-  position: absolute;
-  width: 60px; /* kích thước chim */
-  top: 50px; /* độ cao chim bay */
-  left: -100px; /* bắt đầu ngoài màn hình */
-  z-index: 999;
-  animation: fly 15s linear infinite;
+</script>      
+</style>
+/* 🌤️ Đám mây bay chậm */
+.cloud {
+  position: fixed;
+  top: 80px;
+  width: 200px;
+  height: 100px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 50%;
+  filter: blur(3px);
+  animation: cloudMove 60s linear infinite;
+  z-index: 0;
 }
+.cloud::before, .cloud::after {
+  content: "";
+  position: absolute;
+  background: rgba(255,255,255,0.8);
+  width: 150px;
+  height: 80px;
+  border-radius: 50%;
+}
+.cloud::before { top: -30px; left: 20px; }
+.cloud::after { top: 10px; left: 100px; }
+
+@keyframes cloudMove {
+  from { left: -300px; }
+  to { left: 100vw; }
+}
+
+/* 🐦 Chim bay ngang trời */
+.bird {
+  position: fixed;
+  top: 140px;
+  width: 40px;
+  height: 20px;
+  background: none;
+  border-radius: 50%;
+  animation: fly 25s linear infinite;
+  z-index: 0;
+}
+.bird::before, .bird::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 10px;
+  background: #333;
+  border-radius: 50%;
+}
+.bird::before { transform: rotate(-30deg); left: 0; }
+.bird::after { transform: rotate(30deg); right: 0; }
 
 @keyframes fly {
-  0% { left: -100px; transform: rotate(0deg); }
-  50% { transform: rotate(10deg); } /* chim nghiêng cánh */
-  100% { left: 110%; transform: rotate(0deg); }
+  0% { left: -50px; top: 140px; transform: scale(1) rotate(0deg); }
+  50% { top: 100px; transform: scale(1.1) rotate(5deg); }
+  100% { left: 100vw; top: 160px; transform: scale(1) rotate(-5deg); }
 }
-</style>
-
+       
 </body>
 </html>
