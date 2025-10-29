@@ -1,0 +1,272 @@
+# BAITHUYETTRINH
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slide Nông nghiệp Việt Nam</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+   /* 🌾 Viền và bông lúa SVG (nhúng trực tiếp, không cần link ngoài) */
+.slide {
+  position: relative;
+  border: 6px solid rgba(255, 255, 150, 0.6);
+  border-radius: 30px;
+  box-shadow: 0 0 30px rgba(255, 235, 59, 0.5);
+  background-clip: padding-box;
+  overflow: hidden;
+}
+
+/* Hai bông lúa SVG được chèn bằng pseudo-element */
+.slide::before, .slide::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.9;
+  pointer-events: none;
+  animation: sway 5s ease-in-out infinite alternate;
+  z-index: 5;
+}
+
+/* bông lúa trên trái */
+.slide::before {
+  top: 10px;
+  left: 10px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path fill='%23FFD54F' d='M33 2c0 5-6 8-6 14s8 8 8 14-8 8-8 14 6 9 6 14-5 6-5 6h4s5-2 5-6-6-8-6-14 8-8 8-14-8-8-8-14 6-9 6-14h-4z'/></svg>");
+}
+
+/* bông lúa dưới phải */
+.slide::after {
+  bottom: 10px;
+  right: 10px;
+  transform: rotate(180deg);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path fill='%23FFD54F' d='M33 2c0 5-6 8-6 14s8 8 8 14-8 8-8 14 6 9 6 14-5 6-5 6h4s5-2 5-6-6-8-6-14 8-8 8-14-8-8-8-14 6-9 6-14h-4z'/></svg>");
+}
+
+/* hiệu ứng đung đưa */
+@keyframes sway {
+  0% { transform: rotate(5deg) scale(1); opacity: 0.9; }
+  100% { transform: rotate(-5deg) scale(1.05); opacity: 1; }
+}
+/* 🌟 Hiệu ứng quét ngang ánh sáng */
+.slide::after,
+.slide::before {
+  overflow: hidden;
+}
+
+/* Lớp ánh sáng chạy ngang qua slide */
+.slide::selection,
+.slide::marker { display:none; }
+
+.slide::before,
+.slide::after,
+.slide::after::after {
+  position: absolute;
+}
+
+.slide::after::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+  animation: shine 4s linear infinite;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* Ánh sáng quét ngang */
+@keyframes shine {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+
+
+:root{
+  --green:#8bc34a;
+  --orange:#ffb74d;
+  --yellow:#ffd740;
+  --red:#f44336;
+  --dark:#263238;
+  --white:#fffefb;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Inter',sans-serif;
+  background:linear-gradient(135deg,#ffeb3b 0%,#ff9800 35%,#07dff3 100%);
+  color:var(--dark);
+  overflow:hidden;
+}
+.slide{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  text-align:center;
+  padding:30px;
+  transition:all 1s ease;
+}
+.slide h1{
+  font-family:'Baloo 2',cursive;
+  font-size:2.2rem;
+  color:#fff;
+  text-shadow:0 0 10px rgba(0,0,0,0.4);
+  margin-bottom:10px;
+}
+.slide h2{
+  color:var(--dark);
+  background:rgba(255,255,255,0.6);
+  padding:10px 20px;
+  border-radius:20px;
+  margin-bottom:10px;
+  font-size:1.3rem;
+}
+.slide p{
+  max-width:700px;
+  font-size:1.05rem;
+  line-height:2;
+  color:#212121;
+  background:rgba(255,255,255,0.65);
+  padding:10px 20px;
+  border-radius:14px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+img{
+  width:80%;
+  max-width:600px;
+  border-radius:20px;
+  margin-top:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+  animation:pop 1s ease forwards;
+}
+@keyframes pop{
+  from{transform:scale(0.8);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+
+/* slide transition */
+.fade{animation:fadeSlide 1s ease forwards;}
+@keyframes fadeSlide{
+  from{opacity:0;transform:translateX(50px);}
+  to{opacity:1;transform:translateX(0);}
+}
+
+/* navigation */
+.nav{
+  position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+  display:flex;gap:20px;
+}
+button{
+  background:rgba(255,255,255,0.8);
+  border:none;
+  padding:10px 18px;
+  border-radius:50px;
+  cursor:pointer;
+  font-weight:600;
+  color:#333;
+  box-shadow:0 4px 10px rgba(0,0,0,0.25);
+  transition:all 0.3s ease;
+}
+button:hover{background:#fff;color:#000;transform:scale(1.08);}
+</style>
+</head>
+
+<body>
+
+<div class="slide fade" id="slide1">
+  <h1>🌾 Phiếu học tập 2 – Bài 11</h1>
+  <h2>Vấn đề phát triển ngành nông nghiệp Việt Nam</h2>
+  <p>Tìm hiểu thế mạnh và hạn chế về điều kiện kinh tế – xã hội đối với sự phát triển nông nghiệp Việt Nam.<b>
+  <img src="https://media.la34.com.vn/upload/image/202206/medium/1265895_22_6_can_duoc_phat_huy_mo_hinh_ruong_lau_bo_hoa_anh_kim_khanh_14465022.jpg" alt="Ruộng lúa Việt Nam">
+</div>
+
+<div class="slide" id="slide2" style="display:none;">
+  <h1>👩‍🌾 Dân cư và lao động</h1>
+  <p><b>Đặc điểm:</b> -Dân số đông, lực lượng lao động dồi dào, có kinh nghiệm sản xuất nông nghiệp lâu đời.<br>
+  <b>Thế mạnh:</b> -Cung cấp nguồn nhân lực lớn cho sản xuất nông nghiệp.Có truyền thống, kinh nghiệm trong trồng trọt và chăn nuôi.<br>
+  <b>Hạn chế:</b> -Năng suất lao động thấp, thiếu lao động chất lượng cao.<b>
+  <img src="https://nld.mediacdn.vn/2020/4/11/gnam-15866112098191520105770.jpg" alt="Lao động nông nghiệp">
+</div>
+
+<div class="slide" id="slide3" style="display:none;">
+  <h1>🧪 Khoa học – Công nghệ</h1>
+  <p><b>Đặc điểm:</b> - học – công nghệ ngày càng được ứng dụng vào nông nghiệp (giống mới, cơ giới hóa, công nghệ sinh học).<br>
+  <b>Thế mạnh:</b> -Ứng dụng công nghệ sinh học, máy móc, giống mới giúp tăng năng suất và chất lượng.<br>
+  <b>Hạn chế:</b> -Ứng dụng chưa đồng đều, thiếu chuyên gia kỹ thuật.<b>
+  <img src="https://xuannong.vn/images/nha-mang-trong-ca-chua.png" alt="Nhà kính trồng cà chua">
+</div>
+
+<div class="slide" id="slide4" style="display:none;">
+  <h1>🚜 Cơ sở vật chất – kỹ thuật</h1>
+  <p><b>Đặc điểm:</b> -Hệ thống thuỷ lợi, giao thông, kho tàng, chế biến nông sản ngày càng phát triển.<br>
+  <b>Thế mạnh:</b> -Hệ thống thủy lợi, giao thông, chế biến ngày càng phát triển.<br>
+  <b>Hạn chế:</b> -Vùng sâu vùng xa cơ sở hạ tầng còn yếu, công nghệ bảo quản hạn chế.<b>
+  <img src="https://cdnmedia.baotintuc.vn/Upload/of1YDQmgYWjUVVEP2wPLg/files/2022/03/LuaDongXuan/a21.jpg" alt="Máy gặt Việt Nam">
+</div>
+
+<div class="slide" id="slide5" style="display:none;">
+  <h1>📈 Thị trường tiêu thụ</h1>
+  <p><b>Đặc điểm:</b> -Mở rộng thị trường trong nước và quốc tế.Tham gia nhiều hiệp định thương mại tự do<br>
+  <b>Thế mạnh:</b> -Mở rộng thị trường trong nước & quốc tế, tham gia nhiều hiệp định thương mại.<br>
+  <b>Hạn chế:</b> -Phụ thuộc vào giá cả thế giới, yêu cầu chất lượng cao.<b>
+  <img src="https://hanotour.com.vn/upload_images/images/Chợ_nổi_Cai_Rang_–_Cần_Tho.jpg" alt="Chợ nổi Việt Nam">
+</div>
+
+<div class="slide" id="slide6" style="display:none;">
+  <h1>🎯 Chính sách phát triển nông nghiệp</h1>
+  <p><b>Đặc điểm:</b> -Nhà nước ban hành nhiều chính sách khuyến khích nông nghiệp: hỗ trợ vốn, đất đai, chuyển giao công nghệ, phát triển nông thôn mới.<br>
+ <b>Thế mạnh:<b> -Tạo động lực thúc đẩy sản xuất, nâng cao đời sống nông dân. Góp phần hiện đại hóa nông nghiệp và nông thôn.<br>
+    <b>Hạn Chế:<b> -Một số chính sách còn chậm triển khai hoặc chưa đồng bộ.Hiệu quả đầu tư ở vài nơi chưa cao.</b>
+  <img src="https://nongnghiephuuco.vn/stores/news_dataimages/2024/102024/04/15/20220909085625-56niem-vui-dc-mua20241004153242.jpg?rt=20241004153244" alt="Nông dân Việt Nam">
+</div>
+
+<div class="nav">
+  <button onclick="prevSlide()">⬅ Trước</button>
+  <button onclick="nextSlide()">Tiếp ➡</button>
+</div>
+
+<script>
+let current=1;
+const total=6;
+function showSlide(n){
+  for(let i=1;i<=total;i++){
+    const slide=document.getElementById('slide'+i);
+    if(slide){slide.style.display=(i===n)?'flex':'none';}
+  }
+  const active=document.getElementById('slide'+n);
+  if(active){active.classList.add('fade');setTimeout(()=>active.classList.remove('fade'),800);}
+}
+function nextSlide(){
+  current++;if(current>total)current=1;showSlide(current);
+}
+function prevSlide(){
+  current--;if(current<1)current=total;showSlide(current);
+}
+</script>
+<!-- thêm đoạn này vào cuối file, sau phần code nút chuyển slide -->
+<script>
+let scrollTimeout;
+window.addEventListener('wheel', function(e) {
+  // Ngăn spam cuộn liên tục
+  if (scrollTimeout) return;
+  scrollTimeout = setTimeout(() => scrollTimeout = null, 800);
+
+  if (e.deltaY > 0) {
+    // cuộn xuống → slide tiếp
+    nextSlide();
+  } else if (e.deltaY < 0) {
+    // cuộn lên → slide trước
+    prevSlide();
+  }
+});
+</script>
+
+</body>
+</html>
